@@ -9,7 +9,7 @@ import Checkout from './routes/checkout/checkout.component';
 
 import {  useEffect } from 'react';
 
-import { setCurrentUser} from './store/user/user.action'
+import { setCurrentUser} from './store/user/user.action';
 
 import {
   onAuthStateChangedListener,
@@ -31,6 +31,7 @@ const dispatch = useDispatch();
   
       return unsubscribe;
     }, [dispatch] /*to remove linting error as it doesn;t knopw dispatch wont change  */);
+
   
   return (
     <Routes>

@@ -40,57 +40,14 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
 const clearCartItem = (cartItems, cartItemToClear) =>
   cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
 
-export const CartContext = createContext({
-  isCartOpen: false,
-  setIsCartOpen: () => {},
-  cartItems: [],
-  addItemToCart: () => {},
-  removeItemFromCart: () => {},
-  clearItemFromCart: () => {},
-  cartCount: 0,
-  cartTotal: 0,
-});
 
 //CartReducer start here 
 
- const CART_ACTION_TYPES ={
-  SET_CART_ITEMS:'SET_CART_ITEMS',
-  SET_IS_CART_OPEN:'SET_IS_CART_OPEN',
-}
 
-const INITIAL_STATE = {
-  isCartOpen: false,
-  cartItems: [],
-  cartCount: 0,
-  cartTotal: 0
-}
-
- const CartReducer = (state, action) => {
-  const {type, payload} = action;
-  
-
-  
-//we can included maltipul values inside of payload
-
-  switch(type){
-    case CART_ACTION_TYPES.SET_CART_ITEMS:
-      return{
-        ...state,
-        ...payload
-      }
-       case CART_ACTION_TYPES.SET_IS_CART_OPEN:
-        return{
-        ...state,
-        isCartOpen:  payload,
-        }
-      default: 
-      throw new Error('Unhandled type ${type} in userReducer');
-  }
- }
 
 
 export const CartProvider = ({ children }) => {
- const [{cartItems, isCartOpen, cartCount, cartTotal}, dispatch] = useReducer( CartReducer, INITIAL_STATE)
+
 
 
   const updateCartItemsReducer = (newCartItems) => {
